@@ -12,7 +12,13 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = \DB::table('tags')->orderByDesc('tag')->get();
+
+        return view('admin.tags.index',
+        [
+            'page' => 'Tags index',
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -20,7 +26,10 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create',
+        [
+            'page' => 'Tags create',
+        ]);
     }
 
     /**
@@ -36,15 +45,23 @@ class TagController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tag = \DB::table('tags')->where('id', $id)->first();
+        return view('admin.tags.show',
+        [
+            'page' => 'Tags show',
+            'tag' => $tag,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        return view('admin.tags.edit',
+        [
+            'page' => 'Tags edit',
+        ]);
     }
 
     /**
