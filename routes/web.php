@@ -8,3 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('about', [AboutController::class, 'index']);
+Route::get('/');
